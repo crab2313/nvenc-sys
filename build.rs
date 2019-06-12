@@ -3,7 +3,9 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    println!("cargo:rustc-link-search=native={}", env!("NVENCODE_LIB_DIR"));
+    if let Some(nvencode) = option_env!("NVENCODE_LIB_DIR") {
+        println!("cargo:rustc-link-search=native={}", nvencode);
+    }
     println!("cargo:rustc-link-lib=nvidia-encode");
 
     let bindings = bindgen::Builder::default()
