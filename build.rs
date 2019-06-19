@@ -2,6 +2,14 @@ use bindgen;
 use std::env;
 use std::path::PathBuf;
 
+#[derive(Debug)]
+pub struct Fix753 {}
+impl bindgen::callbacks::ParseCallbacks for Fix753 {
+    fn item_name(&self, original_item_name: &str) -> Option<String> {
+        Some(original_item_name.trim_start_matches("Fix753_").to_owned())
+    }
+}
+
 fn main() {
     if let Some(nvencode) = option_env!("NVENCODE_LIB_DIR") {
         println!("cargo:rustc-link-search=native={}", nvencode);
@@ -10,10 +18,12 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
+        .parse_callbacks(Box::new(Fix753 {}))
         .whitelist_function("NvEnc.*")
         .whitelist_type("NV.*")
         .whitelist_type("_NV.*")
         .whitelist_type("PNV.*")
+        .whitelist_var("NV*")
         .generate()
         .expect("Unable to generate bindings");
 
