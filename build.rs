@@ -23,7 +23,7 @@ fn main() {
         .whitelist_type("NV.*")
         .whitelist_type("_NV.*")
         .whitelist_type("PNV.*")
-        .whitelist_var("NV*")
+        .whitelist_var("Fix753.*")
         .generate()
         .expect("Unable to generate bindings");
 
