@@ -1,6 +1,8 @@
 #include <ffnvcodec/nvEncodeAPI.h>
 
-#define MARK_FIX_753(req_name) const unsigned long int Fix753_##req_name = req_name;
+#define MARK_FIX_753(req_name) const uint32_t Fix753_##req_name = req_name;
+
+MARK_FIX_753(NVENCAPI_VERSION);
 
 MARK_FIX_753(NV_ENC_CAPS_PARAM_VER);
 MARK_FIX_753(NV_ENC_CREATE_INPUT_BUFFER_VER);
