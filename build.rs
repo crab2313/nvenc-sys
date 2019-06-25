@@ -26,6 +26,7 @@ fn main() {
         .whitelist_var("Fix753.*")
         .whitelist_var("NV.*")
         .default_enum_style(bindgen::EnumVariation::ModuleConsts)
+        .derive_eq(true)
         .generate()
         .expect("Unable to generate bindings");
 
