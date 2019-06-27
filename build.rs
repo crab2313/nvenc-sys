@@ -19,7 +19,7 @@ fn main() {
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
         .parse_callbacks(Box::new(Fix753 {}))
-        .whitelist_function("NvEnc.*")
+        .whitelist_function("NvEncodeAPI.*")
         .whitelist_type("NV.*")
         .whitelist_type("_NV.*")
         .whitelist_type("PNV.*")
