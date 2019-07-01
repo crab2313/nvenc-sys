@@ -11,3 +11,16 @@ impl std::fmt::Debug for GUID {
         write!(f, "{:08x}-{:04x}-{:04x}-{}", self.Data1 ,self.Data2, self.Data3, data4)
     }
 }
+
+macro_rules! make_guid {
+    ($d1:expr, $d2:expr, $d3:expr, $d4:expr) => {
+        GUID {
+            Data1: $d1,
+            Data2: $d2,
+            Data3: $d3,
+            Data4: $d4,
+        }
+    };
+}
+
+pub mod guids;
