@@ -24,7 +24,6 @@ fn main() {
         .whitelist_type("_NV.*")
         .whitelist_type("PNV.*")
         .whitelist_var("Fix753.*")
-        .whitelist_var("NV.*")
         .default_enum_style(bindgen::EnumVariation::ModuleConsts)
         .derive_debug(false)
         .derive_eq(true)
